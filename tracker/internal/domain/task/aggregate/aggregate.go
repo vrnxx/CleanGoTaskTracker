@@ -3,13 +3,32 @@ package aggregate
 import (
 	"github.com/google/uuid"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo"
+	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/priority"
 )
 
 type Task struct {
-	ID         vo.TaskID
-	Title      vo.Title
+	vo.TaskID
+	vo.Title
 	AuthorID   uuid.UUID
 	AssigneeID uuid.UUID
-	Status     vo.TaskStatus
-	Priority   vo.Priority
+	vo.TaskStatus
+	priority.Priority
+	vo.Description
+}
+
+func NewTask(
+	id vo.TaskID,
+	title vo.Title,
+	authorID uuid.UUID,
+	priority priority.Priority,
+	description vo.Description,
+) Task {
+	return Task{
+		TaskID:      id,
+		Title:       title,
+		AuthorID:    authorID,
+		TaskStatus:  vo.StatusOpen,
+		Priority:    priority,
+		Description: description,
+	}
 }

@@ -1,21 +1,21 @@
-package vo
+package priority
 
 type Priority string
 
 const (
-	PriorityCritical Priority = "critical"
-	PriorityHigh     Priority = "high"
-	PriorityMedium   Priority = "medium"
-	PriorityLow      Priority = "low"
-	PriorityMinor    Priority = "minor"
+	Critical Priority = "critical"
+	High     Priority = "high"
+	Medium   Priority = "medium"
+	Low      Priority = "low"
+	Minor    Priority = "minor"
 )
 
 var prioritiesMapping = map[Priority]int{
-	PriorityCritical: 99,
-	PriorityHigh:     10,
-	PriorityMedium:   5,
-	PriorityLow:      2,
-	PriorityMinor:    0,
+	Critical: 99,
+	High:     10,
+	Medium:   5,
+	Low:      2,
+	Minor:    0,
 }
 
 func (p Priority) IsValid() bool {

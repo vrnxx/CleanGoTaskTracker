@@ -2,6 +2,7 @@ package exceptions
 
 import (
 	"fmt"
+
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/common/exceptions"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/consts"
 )

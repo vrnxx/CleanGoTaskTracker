@@ -2,15 +2,28 @@ package main
 
 import (
 	"fmt"
+	"github.com/google/uuid"
+	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/aggregate"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo"
+	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/priority"
+	"log"
+)
+
+var (
+	authorID = uuid.New()
 )
 
 func main() {
-	fmt.Printf("application start successfull\n\n")
-	t, err := vo.Title{}.Create("Hello")
+	title, err := vo.Title{}.Create("TestTitle")
 	if err != nil {
-		fmt.Println("error: ", err.Error())
-		return
+		log.Fatal(err.Error())
 	}
-	fmt.Println(t, t.AsGenericType())
+	t := aggregate.NewTask(
+		vo.TaskID{Value: uuid.New()},
+		title,
+		authorID,
+		priority.Medium,
+		vo.Description{Value: "Test Desctiption"},
+	)
+	fmt.Println(t)
 }
