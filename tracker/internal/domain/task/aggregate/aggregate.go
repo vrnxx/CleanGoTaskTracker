@@ -7,13 +7,13 @@ import (
 )
 
 type Task struct {
-	vo.TaskID
-	vo.Title
-	AuthorID   uuid.UUID
-	AssigneeID uuid.UUID
-	vo.TaskStatus
-	priority.Priority
-	vo.Description
+	ID          vo.TaskID
+	Title       vo.Title
+	AuthorID    uuid.UUID
+	AssigneeID  uuid.UUID
+	Status      vo.TaskStatus
+	Priority    priority.Priority
+	Description vo.Description
 }
 
 func NewTask(
@@ -24,10 +24,10 @@ func NewTask(
 	description vo.Description,
 ) Task {
 	return Task{
-		TaskID:      id,
+		ID:          id,
 		Title:       title,
 		AuthorID:    authorID,
-		TaskStatus:  vo.StatusOpen,
+		Status:      vo.StatusOpen,
 		Priority:    priority,
 		Description: description,
 	}

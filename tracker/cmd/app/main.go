@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/google/uuid"
+	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/common/events"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/aggregate"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/priority"
@@ -26,4 +27,7 @@ func main() {
 		vo.Description{Value: "Test Desctiption"},
 	)
 	fmt.Println(t)
+	eventTest := events.NewBaseEvent("test")
+	b, _ := eventTest.Bytes()
+	fmt.Println(eventTest, b)
 }

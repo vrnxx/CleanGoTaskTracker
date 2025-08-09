@@ -1,0 +1,24 @@
+run:
+  timeout: 2m
+  tests: true # проверять и тестовые файлы
+
+linters:
+  disable-all: true
+  enable:
+    - govet         # стандартные проверки Go
+    - errcheck      # проверка необработанных ошибок
+    - staticcheck   # набор умных проверок
+    - gosimple      # упрощение кода
+    - unused        # неиспользуемый код/переменные
+    - ineffassign   # неиспользуемые присваивания
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+# Чтобы линтер не ругался на сгенерированные файлы
+exclude:
+  - "generated.*\\.go"
+  - ".*_mock\\.go"
+  - ".*\\.pb\\.go"
