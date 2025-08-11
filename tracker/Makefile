@@ -9,3 +9,6 @@ lint:
 
 run:
 	go run cmd/app/main.go
+
+code-lines:
+	find . -name "*.go" -exec wc -l {} +
