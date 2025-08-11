@@ -15,7 +15,11 @@ var (
 )
 
 func main() {
-	title, err := vo.Title{}.Create("TestTitle")
+	title, err := vo.NewTitle("TestTitle")
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	desc, err := vo.NewDescription("Test Desctiption")
 	if err != nil {
 		log.Fatal(err.Error())
 	}
@@ -24,7 +28,8 @@ func main() {
 		title,
 		authorID,
 		priority.Medium,
-		vo.Description{Value: "Test Desctiption"},
+		desc,
+		1,
 	)
 	fmt.Println(t)
 	eventTest := events.NewBaseEvent("test")

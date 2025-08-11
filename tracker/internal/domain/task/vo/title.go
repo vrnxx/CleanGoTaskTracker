@@ -9,9 +9,9 @@ type Title struct {
 	Value string
 }
 
-func (Title) Create(val string) (Title, error) {
+func NewTitle(val string) (Title, error) {
 	if len(val) < consts.MinTitleLength || consts.MaxTitleLength < len(val) {
-		return Title{}, exceptions.InvalidTitleLengthCreation{}.Exception(val)
+		return Title{}, exceptions.InvalidTitleLength{}.Exception(val)
 	}
 	return Title{Value: val}, nil
 }
