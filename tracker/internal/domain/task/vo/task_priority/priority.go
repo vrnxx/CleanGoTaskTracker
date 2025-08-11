@@ -1,4 +1,4 @@
-package priority
+package task_priority
 
 type Priority string
 

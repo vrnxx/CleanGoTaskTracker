@@ -3,8 +3,10 @@ package aggregate
 import (
 	"github.com/google/uuid"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo"
-	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/priority"
-	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/status"
+	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/task_delete"
+	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/task_info"
+	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/task_priority"
+	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/task_status"
 )
 
 type Task struct {
@@ -12,27 +14,29 @@ type Task struct {
 	Title       vo.Title
 	AuthorID    uuid.UUID
 	AssigneeID  uuid.UUID
-	Status      status.TaskStatus
-	Priority    priority.Priority
+	Status      task_status.TaskStatus
+	Priority    task_priority.Priority
 	Description vo.Description
-	vo.TaskInfo
+	task_info.TaskInfo
+	task_delete.TaskDeleteInfo
 }
 
 func NewTask(
 	id vo.TaskID,
 	title vo.Title,
 	authorID uuid.UUID,
-	priority priority.Priority,
+	priority task_priority.Priority,
 	description vo.Description,
 	number int,
 ) Task {
 	return Task{
-		ID:          id,
-		Title:       title,
-		AuthorID:    authorID,
-		Status:      status.Open,
-		Priority:    priority,
-		Description: description,
-		TaskInfo:    vo.NewTaskInfo(number),
+		ID:             id,
+		Title:          title,
+		AuthorID:       authorID,
+		Status:         task_status.Open,
+		Priority:       priority,
+		Description:    description,
+		TaskInfo:       task_info.NewTaskInfo(number),
+		TaskDeleteInfo: task_delete.NewTaskDeleteInfo(),
 	}
 }

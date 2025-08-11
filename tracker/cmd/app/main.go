@@ -6,7 +6,7 @@ import (
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/common/events"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/aggregate"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo"
-	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/priority"
+	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/task_priority"
 	"log"
 )
 
@@ -27,7 +27,7 @@ func main() {
 		vo.TaskID{Value: uuid.New()},
 		title,
 		authorID,
-		priority.Medium,
+		task_priority.Medium,
 		desc,
 		1,
 	)
@@ -35,4 +35,10 @@ func main() {
 	eventTest := events.NewBaseEvent("test")
 	b, _ := eventTest.Bytes()
 	fmt.Println(eventTest, b)
+	err = t.DeleteTask()
+	//err = t.DeleteTask()
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	fmt.Println(t)
 }

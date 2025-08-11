@@ -11,7 +11,8 @@ type Description struct {
 
 func NewDescription(text string) (Description, error) {
 	if consts.MaxDescriptionLength < len(text) {
-		return Description{}, exceptions.InvalidDescriptionLength{}.Exception(text)
+		exc := exceptions.InvalidDescriptionLength{}.Exception(text)
+		return Description{}, &exc
 	}
 	return Description{Value: text}, nil
 }

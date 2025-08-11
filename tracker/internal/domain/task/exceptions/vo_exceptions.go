@@ -11,8 +11,8 @@ type InvalidTitleLength struct {
 	exceptions.DomainException
 }
 
-func (e InvalidTitleLength) Exception(context string) *InvalidTitleLength {
-	return &InvalidTitleLength{
+func (e InvalidTitleLength) Exception(context string) InvalidTitleLength {
+	return InvalidTitleLength{
 		DomainException: exceptions.DomainException{
 			Message: fmt.Sprintf(
 				"Title length must be gt %d and lt %d",
@@ -28,8 +28,8 @@ type InvalidDescriptionLength struct {
 	exceptions.DomainException
 }
 
-func (e InvalidDescriptionLength) Exception(context string) *InvalidDescriptionLength {
-	return &InvalidDescriptionLength{
+func (e InvalidDescriptionLength) Exception(context string) InvalidDescriptionLength {
+	return InvalidDescriptionLength{
 		DomainException: exceptions.DomainException{
 			Message: fmt.Sprintf(
 				"Description length must be lt %d",

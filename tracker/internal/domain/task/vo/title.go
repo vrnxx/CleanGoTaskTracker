@@ -11,7 +11,8 @@ type Title struct {
 
 func NewTitle(val string) (Title, error) {
 	if len(val) < consts.MinTitleLength || consts.MaxTitleLength < len(val) {
-		return Title{}, exceptions.InvalidTitleLength{}.Exception(val)
+		exc := exceptions.InvalidTitleLength{}.Exception(val)
+		return Title{}, &exc
 	}
 	return Title{Value: val}, nil
 }

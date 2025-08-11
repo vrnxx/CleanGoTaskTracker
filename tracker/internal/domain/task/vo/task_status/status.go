@@ -1,4 +1,4 @@
-package status
+package task_status
 
 type TaskStatus string
 

@@ -7,6 +7,9 @@ install-deps:
 lint:
 	$(LOCAL_BIN)/golangci-lint --version && $(LOCAL_BIN)/golangci-lint run -v
 
+build:
+	go build -v cmd/app/main.go
+
 run:
 	go run cmd/app/main.go
 
