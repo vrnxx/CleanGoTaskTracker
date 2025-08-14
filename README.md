@@ -1,2 +1,3 @@
 # CleanGoTaskTracker
-applied implementation of Clean Architecture in Golang application
+
+Implementation of Clean Architecture, DDD in Golang web-application
