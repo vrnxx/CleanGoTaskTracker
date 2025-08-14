@@ -2,16 +2,17 @@ package events
 
 import (
 	"github.com/google/uuid"
+	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/common/aggregate"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/common/events"
 )
 
 type TaskAssigned struct {
 	events.BaseEvent
-	TaskID     uuid.UUID
-	AssigneeID uuid.UUID
+	TaskID     uuid.UUID `json:"taskID"`
+	AssigneeID uuid.UUID `json:"assigneeID"`
 }
 
-func NewTaskAssigned(taskID, assigneeID uuid.UUID) *TaskAssigned {
+func NewTaskAssigned(taskID, assigneeID uuid.UUID) aggregate.Event {
 	return &TaskAssigned{
 		BaseEvent:  events.NewBaseEvent("TaskAssigned"),
 		TaskID:     taskID,
