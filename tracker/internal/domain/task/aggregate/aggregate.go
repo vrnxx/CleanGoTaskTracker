@@ -2,6 +2,7 @@ package aggregate
 
 import (
 	"github.com/google/uuid"
+	common "github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/common/aggregate"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/task_delete"
 	"github.com/vrnxx/CleanGoTaskTracker/tracker/internal/domain/task/vo/task_info"
@@ -10,6 +11,7 @@ import (
 )
 
 type Task struct {
+	common.AggregateRoot
 	ID          vo.TaskID
 	Title       vo.Title
 	AuthorID    uuid.UUID

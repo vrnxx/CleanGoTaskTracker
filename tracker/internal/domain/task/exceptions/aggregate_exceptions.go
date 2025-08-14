@@ -17,3 +17,16 @@ func (t TaskIsDeleted) Exception(context string) TaskIsDeleted {
 		},
 	}
 }
+
+type TaskIsCompleted struct {
+	exceptions.DomainException
+}
+
+func (t TaskIsCompleted) Exception(context string) TaskIsCompleted {
+	return TaskIsCompleted{
+		DomainException: exceptions.DomainException{
+			Message: "Task is completed",
+			Ctx:     fmt.Sprintf("task id: %s", context),
+		},
+	}
+}

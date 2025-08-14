@@ -29,3 +29,6 @@ jobs:
 
     - name: Lint
       run: cd tracker && make lint
+
+    - name: Tests
+      run: cd tracker && make test

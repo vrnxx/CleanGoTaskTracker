@@ -5,13 +5,13 @@ type TaskStatus string
 const (
 	Open       TaskStatus = "open"
 	InProgress TaskStatus = "in_progress"
-	Closed     TaskStatus = "closed"
+	Completed  TaskStatus = "completed"
 )
 
 var statusesMapping = map[TaskStatus]struct{}{
 	Open:       {},
 	InProgress: {},
-	Closed:     {},
+	Completed:  {},
 }
 
 func (s TaskStatus) IsValid() bool {

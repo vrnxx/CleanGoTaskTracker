@@ -6,6 +6,14 @@ import (
 	"time"
 )
 
+func Bytes(v any) ([]byte, error) {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return nil, err
+	}
+	return b, nil
+}
+
 type BaseEvent struct {
 	EventID        uuid.UUID
 	EventType      string
@@ -25,9 +33,5 @@ func (e *BaseEvent) AggregateID() uuid.UUID {
 }
 
 func (e *BaseEvent) Bytes() ([]byte, error) {
-	b, err := json.Marshal(e)
-	if err != nil {
-		return nil, err
-	}
-	return b, nil
+	return Bytes(e)
 }

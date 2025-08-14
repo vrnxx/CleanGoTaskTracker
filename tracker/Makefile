@@ -13,5 +13,8 @@ build:
 run:
 	go run cmd/app/main.go
 
+test:
+	go test ./...
+
 code-lines:
 	find . -name "*.go" -exec wc -l {} +
