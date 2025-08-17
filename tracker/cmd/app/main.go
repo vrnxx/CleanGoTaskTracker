@@ -27,11 +27,19 @@ func main() {
 		vo.TaskID{Value: uuid.New()},
 		title,
 		authorID,
+		new(uuid.UUID),
 		task_priority.Medium,
 		desc,
 		1,
 	)
-	fmt.Println(t)
+	fmt.Printf(
+		"[Task Created]\n\tID: %s\n\tAssigneID: %s\n\tStatus: %s\n\tDescription: %s\n\tPriority: %s\n\n",
+		t.ID.AsGenericType(),
+		t.AssigneeID,
+		t.Status,
+		t.Description,
+		t.Priority,
+	)
 	eventTest := events.NewBaseEvent("test")
 	b, _ := eventTest.Bytes()
 	fmt.Println(eventTest, b)

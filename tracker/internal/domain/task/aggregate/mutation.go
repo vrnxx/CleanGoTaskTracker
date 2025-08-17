@@ -14,7 +14,7 @@ func (t *Task) AssignTo(assigneeID uuid.UUID) error {
 	t.RecordEvent(
 		events.NewTaskAssigned(t.ID.Value, assigneeID),
 	)
-	t.AssigneeID = assigneeID
+	t.AssigneeID = &assigneeID
 	return nil
 }
 

@@ -15,7 +15,7 @@ type Task struct {
 	ID          vo.TaskID
 	Title       vo.Title
 	AuthorID    uuid.UUID
-	AssigneeID  uuid.UUID
+	AssigneeID  *uuid.UUID
 	Status      task_status.TaskStatus
 	Priority    task_priority.Priority
 	Description vo.Description
@@ -27,6 +27,7 @@ func NewTask(
 	id vo.TaskID,
 	title vo.Title,
 	authorID uuid.UUID,
+	assigneeID *uuid.UUID,
 	priority task_priority.Priority,
 	description vo.Description,
 	number int,
@@ -35,6 +36,7 @@ func NewTask(
 		ID:             id,
 		Title:          title,
 		AuthorID:       authorID,
+		AssigneeID:     assigneeID,
 		Status:         task_status.Open,
 		Priority:       priority,
 		Description:    description,

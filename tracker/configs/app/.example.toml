@@ -1,0 +1,17 @@
+[app]
+mode='example'  # production, development
+
+[api]
+host = "0.0.0.0"
+port = 8000
+api_url_prefix = "/api/v1"
+
+[db]
+host = "trackerService.postgres"
+port = 5432
+database = "TrackerApp"
+user = "postgres"
+password = "superPassword"
+
+[logging]
+level = "info"
